@@ -17,22 +17,46 @@ document
 
     let data1, country, region, regionCountries;
 
+    let response1;
     try {
-      const response1 = await fetch(
+      response1 = await fetch(
         `https://restcountries.com/v3.1/name/${countryName}`
       );
+    } catch (error) {
+      console.error('Fetch error (country):', error.message);
+      resultDiv.innerHTML = `<p>Error fetching country: ${error.message}</p>`;
+      return;
+    }
 
-      if (!response1.ok) {
-        throw new Error('Country not found');
-      }
+    if (!response1.ok) {
+      resultDiv.innerHTML = '<p>Country not found.</p>';
+      return;
+    }
 
+    try {
       data1 = await response1.json();
-      country = data1[0];
-      region = country.region;
+    } catch (error) {
+      console.error('Error (country):', error.message);
+      resultDiv.innerHTML = `<p>Error parsing country data.</p>`;
+      return;
+    }
 
-      const response2 = await fetch(
+    country = data1[0];
+    region = country.region;
+
+    let response2;
+    try {
+      response2 = await fetch(
         `https://restcountries.com/v3.1/region/${region}`
       );
+    } catch (error) {
+      console.error('Fetch error (region):', error.message);
+      resultDiv.innerHTML =
+       `<p>Error fetching region countries: ${error.message}</p>`;
+      return;
+    }
+
+    try {
       regionCountries = await response2.json();
     } catch (error) {
       console.error('Error:', error.message);
