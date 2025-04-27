@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentForm = document.getElementById("comment_form");
     const commentName = document.getElementById("comment_name");
     const commentText = document.getElementById("comment_text");
-    const commentList = document.getElementById("comment_list");
     const commentBtn = document.getElementById("comment_btn");
     const sortSelect = document.getElementById("sort_comments");
 
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let commentContainer = document.getElementById("all_comments");
         let allComments = Array.from(
             document.querySelectorAll(
-                "#all_comments .comment, #comment_list li"
+                "#all_comments .comment"
             )
         );
 

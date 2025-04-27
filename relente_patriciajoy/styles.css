@@ -512,15 +512,6 @@ li {
     outline: none;
 }
 
-#comment_list {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #ffe6f0;
-}
-
 input,
 textarea {
     width: 100%;
